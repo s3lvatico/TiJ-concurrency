@@ -3,52 +3,52 @@ package org.gmnz.concurrency.task;
 
 public class LiftOff implements Runnable {
 
-   /**
-    * Contatore del numero di istanze.
-    */
-   private static int taskCount = 0;
-   /**
-    * Identificativo dell'istanza. Dichiarato final perché una volta
-    * inizializzato non serve cambiarlo.
-    */
-   private final int id = ++taskCount;
-   protected int countDown = 10;
+    /**
+     * Contatore del numero di istanze.
+     */
+    private static int taskCount = 0;
+    /**
+     * Identificativo dell'istanza. Dichiarato final perché una volta
+     * inizializzato non serve cambiarlo.
+     */
+    private final int id = ++taskCount;
+    /**
+     * countdown predefinito
+     */
+    protected int countDown = 10;
 
 
-
-   public LiftOff() {}
-
-
-
-   public LiftOff(int countDown) {
-      this.countDown = countDown;
-   }
+    public LiftOff() {
+    }
 
 
-
-   public String status() {
-      return "#" + id + "(" + (countDown > 0 ? countDown : "Lift off!") + ")   ";
-   }
-
+    public LiftOff(int countDown) {
+        this.countDown = countDown;
+    }
 
 
-   /*
-    * (non-Javadoc)
-    *
-    * @see java.lang.Runnable#run()
-    *
-    * Tipicamente questo metodo ha un qualche tipo di loop che si ripete finché
-    * il compito ("task") non è stato completato. Occorre quindi stabilire una
-    * condizione secondo la quale si esca dal loop (la più semplice opzione è
-    * quella di un enunciato "return" all'interno del metodo run() ). Spesso
-    * accade che il metodo run() sia implementato sotto forma di loop infinito;
-    * questo significa che, salvo i fattori che causano l'interruzione del
-    * metodo run(), questo continuerà la sua esecuzione indefinitamente.
-    */
-   @Override
-   public void run() {
-      while (countDown-- > 0) {
-         System.out.print(status());
+    public String status() {
+        return "#" + id + "(" + (countDown > 0 ? countDown : "Lift off!") + ")   ";
+    }
+
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Runnable#run()
+     *
+     * Tipicamente il metodo run() ha un qualche tipo di loop che si ripete finché
+     * il compito ("task") non è stato completato. Occorre quindi stabilire una
+     * condizione secondo la quale si esca dal loop (la più semplice opzione è
+     * quella di un enunciato "return" all'interno del metodo run() ). Spesso
+     * accade che il metodo run() sia implementato sotto forma di loop infinito;
+     * questo significa che, salvo i fattori che causano l'interruzione del
+     * metodo run(), questo continuerà la sua esecuzione indefinitamente.
+     */
+    @Override
+    public void run() {
+        while (countDown-- > 0) {
+            System.out.print(status());
          /*
           * La chiamata a yield() è un suggerimento al thread scheduler. Il
           * thread scheduler è quella parte del meccanismo di threading di
@@ -58,9 +58,9 @@ public class LiftOff implements Runnable {
           * se necessario". E' totalmente opzionale, ma è usato qui perché
           * tende a produrre un output più interessante nei vari esempi.
           */
-         Thread.yield();
-      }
-   }
+            Thread.yield();
+        }
+    }
 
 
 }
