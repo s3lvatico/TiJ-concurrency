@@ -2,3 +2,9 @@
 .idea/
 Concurrency/target/
 *.iml
+/bin/
+
+# file generati da eclipse
+.classpath
+.project
+/target/
