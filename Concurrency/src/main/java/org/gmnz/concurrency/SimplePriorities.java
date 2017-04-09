@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
 public class SimplePriorities implements Runnable {
 
 	private int countDown = 5;
+	@SuppressWarnings("unused")
 	private volatile double d; // no optimization
 	private int priority;
 
