@@ -7,11 +7,27 @@ public class SelfManaged implements Runnable {
 	private Thread t;
 	
 	public SelfManaged() {
-		t = new Thread
+		t = new Thread(this);
+		t.start();
 	}
 	
-	public void run() {
-		
+	public String toString() {
+		return String.format("%s(%d) ", t.getName(), countDown);
 	}
 
+	public void run() {
+		while(true){
+			System.out.print(this);
+			if (--countDown == 0) {
+				System.out.println();
+				return;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		for (int i = 0; i<5; i++) {
+			new SelfManaged();
+		}
+	}
 }
