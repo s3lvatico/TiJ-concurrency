@@ -1,0 +1,18 @@
+@startuml innerThread1
+class InnerThread1  {
+   - countDown
+   - inner : Inner
+   + InnerThread1(name : String)
+}
+class Inner {
+   ~ Inner(name : String)
+   + run()
+   + toString()
+}
+
+InnerThread1 *-->  Inner : inner
+package "java.lang" {
+   class Thread
+}
+Thread <|-- Inner
+@enduml
