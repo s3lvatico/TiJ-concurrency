@@ -1,0 +1,27 @@
+@startuml captureExceptionThread
+
+class ExceptionThread2 {
+    + run() : void
+}
+interface Runnable
+interface UncaughtExceptionHandler
+interface ThreadFactory
+class GzExceptionHandler {
+    + uncaughtException(t : Thread,  e : Throwable)
+}
+class HandledExceptionThreadFactory {
+    + newThread(r : Runnable) : Thread
+}
+
+ExceptionThread2 --|> Runnable  
+GzExceptionHandler --|> UncaughtExceptionHandler
+HandledExceptionThreadFactory --|> ThreadFactory
+HandledExceptionThreadFactory --> GzExceptionHandler
+
+class CaptureUncaughtException {
+    + main()
+}
+
+CaptureUncaughtException -->HandledExceptionThreadFactory
+CaptureUncaughtException -> ExceptionThread2
+@enduml
