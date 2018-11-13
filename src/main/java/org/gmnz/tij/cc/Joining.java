@@ -58,8 +58,8 @@ public class Joining {
         Sleeper sleepy = new Sleeper("Sleepy", 1500);
         Sleeper grumpy = new Sleeper("Grumpy", 1500);
 
-        Joiner dopey = new Joiner("Dopey", sleepy);
-        Joiner doc = new Joiner("Doc", grumpy);
+        /* Joiner dopey = */  new Joiner("Dopey", sleepy);
+        /* Joiner doc = */ new Joiner("Doc", grumpy);
 
         // interruzione forzata
         grumpy.interrupt();
