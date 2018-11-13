@@ -1,0 +1,30 @@
+@startuml innerRunnable1Seq
+participant "InnerRunnable1" as ir1
+'participant "__Inner : Runnable__" as inner
+'participant "__t : Thread__" as t
+
+[-> ir1 : <<creation>>
+activate ir1
+
+create participant "__Inner : Runnable__" as inner
+ir1 -> inner : <<creation>>
+
+create participant "__t : Thread__" as t
+inner -> t :  <<creation>>
+note right : passes Inner as the\ntask for the Thread
+
+inner -> t : start()
+
+activate t
+t -> t : run()
+loop countdown != 0
+   t->t : sleep(100)
+end
+deactivate t
+
+t --> inner : return
+inner --> ir1 : return
+
+[<-- ir1 : return
+deactivate ir1
+@enduml

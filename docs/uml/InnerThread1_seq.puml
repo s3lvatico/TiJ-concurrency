@@ -1,9 +1,18 @@
 @startuml innerThread1Seq
+
 InnerThread1 -> Inner : creation
+activate Inner
+
 Inner -> Inner : start()
+
 Inner -> Inner : run()
+activate Inner
 loop countdown != 0
    Inner -> Inner : sleep(100)
 end
+deactivate Inner
+
+Inner --> InnerThread1 : return
+deactivate Inner
 
 @enduml
