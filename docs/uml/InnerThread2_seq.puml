@@ -1,0 +1,21 @@
+@startuml innerThread2Seq
+participant "InnerThread2" as it2
+participant "t : Thread" as t
+[-> it2 : <<creation>>
+activate it2
+it2 -> t : <<creation>
+activate t
+deactivate t
+it2 -> t : start()
+t--> it2
+t -> t : run()
+activate t
+loop countdown != 0
+   t -> t : sleep(100)
+end
+deactivate t
+t--> it2
+
+
+
+@enduml

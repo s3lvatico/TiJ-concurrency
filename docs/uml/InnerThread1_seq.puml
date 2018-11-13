@@ -1,0 +1,9 @@
+@startuml innerThread1Seq
+InnerThread1 -> Inner : creation
+Inner -> Inner : start()
+Inner -> Inner : run()
+loop countdown != 0
+   Inner -> Inner : sleep(100)
+end
+
+@enduml

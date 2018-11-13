@@ -1,0 +1,19 @@
+@startuml innerRunnable1
+class InnerRunnable1  {
+   - countDown : int
+   + InnerRunnable1(name : String)
+}
+
+class Inner <<private>> {
+   - t : Thread
+   # Inner(name : String)
+   + toString() : String
+   + run()
+}
+
+Inner -->  java.lang.Thread : " t"
+java.lang.Runnable <|- Inner
+
+InnerRunnable1 --> Inner : <<creates>>
+
+@enduml

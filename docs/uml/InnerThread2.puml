@@ -1,0 +1,20 @@
+@startuml innerThread2
+class InnerThread2  {
+   - countDown
+   - t : Thread
+   # InnerThread2(name : String)
+}
+
+class Thread  {
+   - name : String
+   + run()
+   + start()
+   + toString()
+}
+
+InnerThread2 -> Thread : <<creates>>
+
+note "starts right\nafter creation" as n1
+Thread .. n1
+
+@enduml
