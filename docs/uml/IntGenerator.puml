@@ -1,0 +1,8 @@
+@startuml intGenerator
+abstract class IntGenerator {
+  - canceled : boolean, volatile
+  + cancel() : void
+  + {abstract} next() : int
+  + isCanceled()  : boolean
+}
+@enduml

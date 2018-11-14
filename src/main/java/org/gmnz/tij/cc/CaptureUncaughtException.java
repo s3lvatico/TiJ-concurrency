@@ -14,10 +14,13 @@ class ExceptionThread2 implements Runnable {
         throw new RuntimeException("<from ET2> here's the exception");
     }
 
+
+
+
     public String toString() {
         return getClass().getSimpleName() + hashCode();
     }
-    
+
 }
 
 class GzExceptionHandler implements Thread.UncaughtExceptionHandler {
@@ -32,27 +35,27 @@ class GzExceptionHandler implements Thread.UncaughtExceptionHandler {
 class HandledExceptionThreadFactory implements ThreadFactory {
 
     @Override
-	public Thread newThread(Runnable r) {
+    public Thread newThread(Runnable r) {
         System.out.println("[TF] " + this + " creating new Thread for " + r);
         Thread t = new Thread(r);
         System.out.println("[TF] thread created: " + t);
         t.setUncaughtExceptionHandler(new GzExceptionHandler());
         System.out.println("[TF] the exception handler is " + t.getUncaughtExceptionHandler());
-		return t;
-	}
+        return t;
+    }
 }
 
 /*
-Vale veramente la pena eseguirlo perché si scoprono comportamenti molto 
-interessanti.
-Ad esempio, sembra che vengano creati due thread dalla threadfactory dello 
-stesso executorService, mentre ex tabula sembra che la factory debba creare 
-solo un thread.
-*/
+ * Vale veramente la pena eseguirlo perché si scoprono comportamenti molto
+ * interessanti.
+ * Ad esempio, sembra che vengano creati due thread dalla threadfactory dello
+ * stesso executorService, mentre ex tabula sembra che la factory debba creare
+ * solo un thread.
+ */
 public class CaptureUncaughtException {
 
     public static void main(String[] args) {
-        ExecutorService exe = Executors.newCachedThreadPool(new HandledExceptionThreadFactory());
-        exe.execute(new ExceptionThread2());
+        ExecutorService xtor = Executors.newCachedThreadPool(new HandledExceptionThreadFactory());
+        xtor.execute(new ExceptionThread2());
     }
 }

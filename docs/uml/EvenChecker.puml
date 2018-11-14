@@ -1,0 +1,24 @@
+@startuml evenChecker
+
+abstract class IntGenerator {
+  - canceled : boolean, volatile
+  + cancel() : void
+  + {abstract} next() : int
+  + isCanceled()  : boolean
+}
+
+
+class EvenChecker {
+   - intGenerator : IntGenerator
+   - id : int
+   + EvenChecker(IntGenerator, int) : ctor
+   + run() : void
+   + {static} test(IntGenerator, int) : void
+   + {static} test(IntGenerator) : void
+}
+interface Runnable 
+
+EvenChecker -up-|> Runnable
+EvenChecker --> "intGenerator" IntGenerator : <<uses>>
+
+@enduml
