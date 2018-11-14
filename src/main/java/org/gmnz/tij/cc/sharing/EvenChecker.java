@@ -23,7 +23,7 @@ public class EvenChecker implements Runnable {
       while (!intGenerator.isCanceled()) {
          int value = intGenerator.next();
          if (value % 2 != 0) {
-            System.err.printf("[!] value not even <%d>%n", value);
+            System.err.printf("[!%d!] value not even <%d>%n", id, value);
             intGenerator.cancel();
          }
       }
@@ -38,6 +38,7 @@ public class EvenChecker implements Runnable {
       for (int i = 0; i < count; i++) {
          xtor.execute(new EvenChecker(intGenerator, i));
       }
+      xtor.shutdown();
    }
 
 
