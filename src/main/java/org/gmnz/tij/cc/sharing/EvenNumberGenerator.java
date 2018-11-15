@@ -7,11 +7,12 @@ public class EvenNumberGenerator extends AbstractIntegerGenerator {
    public int next() {
       currentEvenValue++;
       currentEvenValue++;
+      currentEvenValue++;
+      currentEvenValue++;
       return currentEvenValue;
    }
 
    public static void main(String[] args) {
-      EvenChecker.test(new EvenNumber
-   Generator());
+      EvenChecker.test(new EvenNumberGenerator());
    }
 }
