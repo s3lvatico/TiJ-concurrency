@@ -6,8 +6,7 @@ public class EvenNumberGenerator extends AbstractIntegerGenerator {
 
    public int next() {
       currentEvenValue++;
-      currentEvenValue++;
-      currentEvenValue++;
+      Thread.yield();
       currentEvenValue++;
       return currentEvenValue;
    }
