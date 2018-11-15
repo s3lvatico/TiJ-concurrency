@@ -8,10 +8,16 @@ public class EvenChecker implements Runnable {
    private AbstractIntegerGenerator intGenerator;
    private final int id;
 
+
+
+
    public EvenChecker(AbstractIntegerGenerator intGenerator, int id) {
       this.intGenerator = intGenerator;
       this.id = id;
    }
+
+
+
 
    public void run() {
       while (!intGenerator.isCanceled()) {
@@ -23,6 +29,9 @@ public class EvenChecker implements Runnable {
       }
    }
 
+
+
+
    public static void test(AbstractIntegerGenerator intGenerator, int count) {
       System.out.println("Press CTRL-C to exit");
       ExecutorService xtor = Executors.newCachedThreadPool();
@@ -31,6 +40,9 @@ public class EvenChecker implements Runnable {
       }
       xtor.shutdown();
    }
+
+
+
 
    public static void test(AbstractIntegerGenerator intGenerator) {
       test(intGenerator, 10);
