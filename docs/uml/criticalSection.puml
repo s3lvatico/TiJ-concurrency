@@ -1,0 +1,20 @@
+@startuml criticalSection
+
+class Pair {
+    - x : int
+    - y : int
+    + Pair(x : int, y : int)
+    + Pair()
+    + getX() : int
+    + getY() : int
+    + incrementX() : void
+    + incrementY() : void
+    + toString() : String
+    + checkState() : void
+}
+
+class PairValuesNotEqualException
+
+RuntimeException  <|-- PairValuesNotEqualException
+Pair .right. PairValuesNotEqualException
+@enduml
