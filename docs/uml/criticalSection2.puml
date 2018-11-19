@@ -1,0 +1,12 @@
+@startuml criticalSection2
+
+class CriticalSection {
+    ~ {static} testApproaches(pm1, pm2 : PairManager) : void
+    + {static} main(args : String[]) : void
+}
+
+abstract class PairManager
+
+CriticalSection --> "2" PairManager 
+
+@enduml

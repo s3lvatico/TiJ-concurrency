@@ -1,6 +1,11 @@
 package org.gmnz.tij.cc.critical;
 
-// task che controlla lo stato di una coppia
+/**
+ * Controlla lo stato di un {@link PairManager}.
+ * <p>
+ * E' un task che esercita il PairManager incrementando il contatore interno al PairManager e facendo una verifica sullo
+ * stato del Pair
+ */
 class PairChecker implements Runnable {
 
    private PairManager pm;

@@ -4,13 +4,13 @@ package org.gmnz.tij.cc.critical;
  * Una coppia di interi positivi.
  * <p>
  * Le componenti possono solo essere incrementate singolarmente. Ci sono metodi
- * per l'accesso in lettura alle componenti.
+ * per l'accesso in lettura alle componenti. (questo non rende thread safe questa classe)
  * 
  * Il controllo di stato viene effettuato controllando se le componenti sono
  * uguali. Una difformità causa un'eccezione.
  */
 class Pair {
-   
+
    private int x;
    private int y;
 

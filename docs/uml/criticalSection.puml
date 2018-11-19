@@ -15,6 +15,41 @@ class Pair {
 
 class PairValuesNotEqualException
 
-RuntimeException  <|-- PairValuesNotEqualException
+PairValuesNotEqualException -up-|> RuntimeException  
+
 Pair .right. PairValuesNotEqualException
+
+abstract class PairManager {
+    # p : Pair
+    ~ checkCounter : AtomicInteger
+    + getPair() : Pair
+    # store(p : Pair) : void
+    # {abstract} increment() : void    
+}
+
+PairManager -up-> Pair
+
+class FullySynchronizedPairManager {
+    # increment() : void -- synchronized
+}
+
+FullySynchronizedPairManager -up-|> PairManager
+
+class SynchSectionPairManager {    
+    # increment() : void
+}
+
+SynchSectionPairManager -up-|> PairManager
+
+
+class PairManipulator
+
+PairManipulator -right-> PairManager
+
+class PairChecker {
+
+}
+
+PairChecker -left-> PairManager
+
 @enduml

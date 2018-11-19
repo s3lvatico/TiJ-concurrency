@@ -21,10 +21,6 @@ abstract class PairManager {
     */
    protected Pair p = new Pair();
 
-   
-   // TODO come viene iniettata la Pair nel PairManager?!?
-
-
    /**
     * repository dei {@link Pair}
     */
@@ -34,7 +30,7 @@ abstract class PairManager {
 
 
    /**
-    * ottiene il {@link Pair} corrente
+    * Ottiene una immagine-copia della {@link Pair} nel suo stato attuale.
     */
    synchronized Pair getPair() {
       return new Pair(p.getX(), p.getY());
@@ -44,7 +40,18 @@ abstract class PairManager {
 
 
    /**
-    * memorizza nella collezione la {@link Pair} specificata.
+    * incrementa il valore di entramble le componenti della {@link Pair} e poi la
+    * memorizza nello storage. Questo è solo il contratto del metodo.
+    */
+   abstract void increment();
+
+
+
+
+   /**
+    * Memorizza nella collezione la {@link Pair} specificata.
+    * Le specializzazioni di questa classe devono chiamare questo metodo all'interno del metodo
+    * {@link PairManager#increment()}
     * 
     * Aggiunge all'operazione un minimo ritardo.
     * 
@@ -58,12 +65,4 @@ abstract class PairManager {
          /* ignored */ }
    }
 
-
-
-
-   /**
-    * incrementa il valore di entramble le componenti della {@link Pair} e poi la
-    * memorizza nello storage
-    */
-   abstract void increment();
 }
